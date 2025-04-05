@@ -1,0 +1,14 @@
+services:
+  billing-service:
+    build: .
+    container_name: billing-service
+    ports:
+      - "4001:4001"
+      - "9001:9001"
+    restart: unless-stopped
+    networks:
+      - internal
+
+networks:
+  internal:
+    external: true

@@ -17,6 +17,12 @@ public class BillingGrpcService extends BillingServiceGrpc.BillingServiceImplBas
                                      StreamObserver<BillingResponse> responseObserver){
         log.info("Create billing account request recieved {}", billingRequest.toString());
 
+        BillingResponse response = BillingResponse.newBuilder()
+                .setAccountId("1")
+                .setStatus("ACTIVE")
+                .build();
 
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
     }
 }
